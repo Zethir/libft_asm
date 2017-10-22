@@ -1,12 +1,12 @@
 global _ft_toupper
 
 _ft_toupper:
-	cmp	rdi, 0x61
-	jb	not_lower
+	cmp	rdi, 0x61 
+	jb	return_value ; check if cmp is below 'a' and jump to return_value if it is
 	cmp rdi, 0x7a
-	jg	not_lower
-	sub rdi, 0x20 
+	jg	return_value ; check if cmp is above 'z' and jump to return_value if it is
+	sub rdi, 0x20 ; substract  32 to rdi to make it uppercase
 
-not_lower:
-	mov rax, rdi
+return_value:
+	mov rax, rdi ; mov rdi, change or unchanged, to rax and return it
 	ret

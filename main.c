@@ -6,17 +6,30 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 16:01:31 by cboussau          #+#    #+#             */
-/*   Updated: 2017/10/21 19:40:18 by cboussau         ###   ########.fr       */
+/*   Updated: 2017/10/22 19:37:28 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include <ctype.h>
 #include <string.h>
+#include <stdlib.h>
 #include <libfts.h>
+#include <fcntl.h>
+
+void	test_cat()
+{
+	int fd;
+	
+	fd = open("test.txt", O_RDONLY);
+	ft_cat(fd);
+	printf("\n");
+}
 
 int		main()
 {
+	char	*buf;
+	
 	printf("ISALPHA:\n");
 	printf("	-NOT ALPHA REAL: %i\n", isalpha('/'));
 	printf("	-NOT ALPHA FT: %i\n\n", ft_isalpha('/'));
@@ -83,6 +96,37 @@ int		main()
 	printf("	-PUTS REAL: %d\n", puts("hello world and welcome"));
 	printf("	-PUTS NULL FT: %d\n", ft_puts(NULL));
 	printf("	-PUTS EMPTY FTL: %d\n", ft_puts(""));
-	printf("	-PUTS FT: %d\n", ft_puts("hello world and welcome"));
-	return (0);
+	printf("	-PUTS FT: %d\n\n", ft_puts("hello world and welcome"));
+
+	printf("STRDUP AND MEMCPY AND BZERO AND STRCPY AND MEMSET:\n");
+	buf = ft_strdup("           ");
+	memcpy(buf, "0123456789", 10);
+	printf("	-MEMCPY REAL: %s\n", buf);
+	bzero(buf, 10);
+	printf("	-BZERO REAL: %s\n\n", buf);
+	ft_memcpy(buf, "0123456789", 10);
+	printf("	-MEMCPY FT: %s\n", buf);
+	ft_bzero(buf, 10);
+	printf("	-BZERO FT: %s\n\n", buf);
+	strcpy(buf, "0123456789");
+	printf("	-STRCPY REAL: %s\n", buf);
+	bzero(buf, 10);
+	ft_strcpy(buf, "0123456789");
+	printf("	-STRCPY FT: %s\n\n", buf);
+	bzero(buf, 10);
+	memset(buf, 'a', 10);
+	printf("	-MEMSET REAL: %s\n", buf);
+	ft_memset(buf, 'a', 10);
+	printf("	-MEMSET FT: %s\n\n", buf);
+
+	free(buf);
+	printf("STRCAT\n");
+	buf = strdup("012345");
+	printf("	-STRCAT REAL = %s\n", strcat(buf, "6789"));
+	free(buf);
+	buf = strdup("012345");
+	printf("	-STRCAT FT = %s\n", ft_strcat(buf, "6789"));
+	
+	test_cat();
+	return (0); 
 }
