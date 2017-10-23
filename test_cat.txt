@@ -1,0 +1,3 @@
+I'm a test for cat
+And this is the second line of the test for cat
+A last one just in case

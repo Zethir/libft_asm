@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 16:01:31 by cboussau          #+#    #+#             */
-/*   Updated: 2017/10/23 14:05:08 by cboussau         ###   ########.fr       */
+/*   Updated: 2017/10/23 16:11:22 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,22 @@ int		main()
 	printf("	-ISPRINT REAL: %i\n", isprint(100));
 	printf("	-ISPRINT FT: %i\n\n", ft_isprint(100));
 	
+	printf("ISSPACE:\n");
+	printf("	-NOT ISSPACE REAL: %i\n", isspace(90));
+	printf("	-NOT ISSPACE FT: %i\n\n", ft_isspace(90));
+	printf("	-ISSPACE TAB  REAL: %i\n", isspace(9));
+	printf("	-ISSPACE TAB FT: %i\n\n", ft_isspace(9));
+	printf("	-ISSPACE NEW LINE REAL: %i\n", isspace(10));
+	printf("	-ISSPACE NEW LINE FT: %i\n\n", ft_isspace(10));
+	printf("	-ISSPACE VERT TAB REAL: %i\n", isspace(11));
+	printf("	-ISSPACE VERT TAB FT: %i\n\n", ft_isspace(11));
+	printf("	-ISSPACE FORM FEED REAL: %i\n", isspace(12));
+	printf("	-ISSPACE FORM FEED FT: %i\n\n", ft_isspace(12));
+	printf("	-ISSPACE CARRIAGE RET REAL: %i\n", isspace(13));
+	printf("	-ISSPACE CARRIAGE RET FT: %i\n\n", ft_isspace(13));
+	printf("	-ISSPACE SPACE REAL: %i\n", isspace(32));
+	printf("	-ISSPACE SPACE FT: %i\n\n", ft_isspace(32));
+	
 	printf("TOUPPER:\n");
 	printf("	-NOT LOWER TOUPPER REAL: %i\n", toupper(3));
 	printf("	-NOT LOWER TOUPPER FT: %i\n\n", ft_toupper(3));
@@ -119,6 +135,24 @@ int		main()
 	printf("	-STRCAT FT = %s\n", ft_strcat(buf, "6789"));
 	
 	printf("CAT\n");
-	ft_cat(0);
+	int	fd = open("test_cat.txt", O_RDONLY);
+	ft_cat(fd);
+
+	printf("PUTSTR\n");
+	ft_putstr("I'm a string\n\n");
+
+	printf("STRCMP\n");
+	printf("	-STRCMP NOT SAME REAL = %d\n", strcmp("test", "test1"));
+	printf("	-STRCMP NOT SAME FT = %d\n\n", ft_strcmp("test", "test1"));
+	printf("	-STRCMP SAME REAL = %d\n", strcmp("test", "test"));
+	printf("	-STRCMP SAME FT = %d\n\n", ft_strcmp("test", "test"));
+
+	printf("STRCHR\n");
+	printf("	-NULL STRCHR REAL = %s\n", strchr("Bonjour", 0));
+	printf("	-NULL STRCHR FT = %s\n", ft_strchr("Bonjour", 0));
+	printf("	-NO CHAR FOUND STRCHR REAL = %s\n", strchr("Bonjour", 't'));
+	printf("	-NO CHAR FOUND STRCHR FT = %s\n", ft_strchr("Bonjour", 't'));
+	printf("	-STRCHR REAL = %s\n", strchr("Bonjour", 'j'));
+	printf("	-STRCHR FT = %s\n", ft_strchr("Bonjour", 'j'));
 	return (0); 
 }
