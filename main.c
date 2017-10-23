@@ -6,7 +6,7 @@
 /*   By: cboussau <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/21 16:01:31 by cboussau          #+#    #+#             */
-/*   Updated: 2017/10/22 19:37:28 by cboussau         ###   ########.fr       */
+/*   Updated: 2017/10/23 14:05:08 by cboussau         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,6 @@
 #include <stdlib.h>
 #include <libfts.h>
 #include <fcntl.h>
-
-void	test_cat()
-{
-	int fd;
-	
-	fd = open("test.txt", O_RDONLY);
-	ft_cat(fd);
-	printf("\n");
-}
 
 int		main()
 {
@@ -127,6 +118,7 @@ int		main()
 	buf = strdup("012345");
 	printf("	-STRCAT FT = %s\n", ft_strcat(buf, "6789"));
 	
-	test_cat();
+	printf("CAT\n");
+	ft_cat(0);
 	return (0); 
 }
